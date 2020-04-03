@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Adarsh Mishra">
+    <link rel="stylesheet" href="style.css">
+    <title>Day / Night</title>
+</head>
+
+<body onload="startTime()">
+    <div class="container">
+        <div class="dt">
+            <div class="time">
+
+            </div>
+            <div class="date">
+
+            </div>
+        </div>
+        <div class="box">
+            <div class="text">Light</div>
+            <div class="toggle">
+                <div class="circle">
+                </div>
+            </div>
+            <div class="text">Dark</div>
+        </div>
+        <div class="greet">Hey Captain!</div>
+    </div>
+</body>
+
+</html>
+
+<script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        $(".time").text(h + ":" + m + ":" + s);
+        var t = setTimeout(startTime, 500);
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i
+        };
+        return i;
+    }
+    var today = new Date();
+    var date = today.getDate() + ' / ' + (today.getMonth() + 1) + ' / ' + today.getFullYear();
+    $('.date').text(date);
+</script>
+<script>
+    var flag = 0;
+    $('.toggle').click(function() {
+        if (flag == 0) {
+            $('.toggle').css("justify-content", "flex-end");
+            $('body').css("background-color", "#13002e");
+            $("body").css("color", 'white');
+            $('.circle').css("background-color", "white");
+            flag = 1;
+        } else {
+            $('.toggle').css("justify-content", "flex-start");
+            $('body').css("background-color", "lavender");
+            $("body").css("color", 'black');
+            $('.circle').css("background-color", "black");
+            flag = 0;
+        }
+    })
+
+</script>
